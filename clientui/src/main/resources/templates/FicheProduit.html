@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mcommerce - details produit</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="offset-2 col-lg-5">
+            <h1 class="alert alert-info">Application Mcommerce - Détails Produit</h1>
+        </div>
+        <div class="offset-1 col-lg-2">
+            <a href="http://localhost:8080/"><button type="button" class="btn btn-info">Accueil</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <img th:src="${produit.image}"  class="rounded-circle" />
+        <p th:text="${produit.titre}" class="font-weight-bold"></p>
+        <p th:text="${produit.description}"></p>
+        <p>
+            <a th:href="@{|/details-produit/commander-produit/${produit.id}|}" class="font-weight-bold">COMMANDER</a>
+        </p>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
