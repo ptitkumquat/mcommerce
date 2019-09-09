@@ -1,5 +1,6 @@
 package com.mpaiement.web.controller;
 
+import com.mpaiement.configuration.ApplicationPropertiesConfiguration;
 import com.mpaiement.dao.PaiementDao;
 import com.mpaiement.model.Paiement;
 import com.mpaiement.web.exceptions.PaiementExistantException;
@@ -14,6 +15,9 @@ public class PaiementController {
 
     @Autowired
     PaiementDao paiementDao;
+
+    @Autowired
+    ApplicationPropertiesConfiguration appProperties;
 
     @PostMapping(value = "/paiement")
     public ResponseEntity<Paiement>  payerUneCommande(@RequestBody Paiement paiement){
@@ -35,6 +39,14 @@ public class PaiementController {
 
         return new ResponseEntity<Paiement>(nouveauPaiement, HttpStatus.CREATED);
 
+    }
+
+    @GetMapping(value = "/montantPaiement")
+    public int montantMaxCommande(){
+
+        int montantMax = appProperties.getMontantFixe();
+
+        return montantMax;
     }
 
 
